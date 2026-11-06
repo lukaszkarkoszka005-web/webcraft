@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="HOTBOX — podgrzewane lunchboxy do pracy, na uczelnię i w podróż.">
+<title>HOTBOX — Twój lunch. Zawsze na gorąco.</title>
+<style>
+:root{--ink:#202124;--muted:#686b6f;--orange:#f4511e;--orange-dark:#d94112;--cream:#fff8f3;--soft:#f8f7f5;--line:#e9e8e5;--white:#fff;--shadow:0 18px 50px #1a1c1e12}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}button{cursor:pointer}.container{width:min(1160px,calc(100% - 40px));margin:auto}.announcement{background:var(--ink);color:#fff;text-align:center;padding:9px 14px;font-size:.82rem;letter-spacing:.025em}
+header{position:sticky;top:0;z-index:20;background:#ffffffed;backdrop-filter:blur(14px);border-bottom:1px solid #0000000b}.nav{min-height:88px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand-logo{display:block;width:auto;max-width:260px;height:68px;object-fit:contain}.footer-top .brand-logo{height:58px;max-width:240px}@media(max-width:600px){.brand-logo{max-width:190px;height:54px}.footer-top .brand-logo{max-width:180px;height:48px}}.brand{display:inline-flex;align-items:center;gap:10px;font-size:1.4rem;font-weight:950;letter-spacing:-.07em}.brand-name span{color:var(--orange)}.brand-mark{width:32px;height:27px;border:3px solid var(--ink);border-radius:7px 7px 9px 9px;position:relative;display:inline-block}.brand-mark:before{content:"";position:absolute;left:5px;right:5px;top:-7px;height:5px;border:3px solid var(--ink);border-bottom:0;border-radius:5px 5px 0 0}.nav-links{display:flex;align-items:center;gap:23px;font-size:.9rem;font-weight:700}.nav-links a:hover{color:var(--orange)}.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:13px 20px;border:1px solid transparent;border-radius:999px;background:var(--orange);color:#fff;font-weight:800;transition:.2s}.btn:hover{background:var(--orange-dark);transform:translateY(-1px)}.btn.dark{background:var(--ink)}.btn.dark:hover{background:#393b3d}.btn.outline{background:transparent;color:var(--ink);border-color:#d7d7d4}.btn.outline:hover{border-color:var(--orange);color:var(--orange)}.cart-button{position:relative;white-space:nowrap}.cart-count{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 5px;background:white;color:var(--orange);border-radius:50%;font-size:.75rem}
+.hero{padding:76px 0 66px;background:radial-gradient(circle at 82% 35%,#fff0e6 0,#fff 38%);overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:40px}.eyebrow{display:inline-block;background:#fff0e7;color:var(--orange-dark);padding:7px 12px;border-radius:999px;font-weight:850;font-size:.76rem;text-transform:uppercase;letter-spacing:.08em}h1{font-size:clamp(2.8rem,5.8vw,5.2rem);line-height:.99;letter-spacing:-.075em;margin:22px 0}h1 em{color:var(--orange);font-style:normal}.hero-copy{font-size:1.12rem;color:var(--muted);max-width:540px;margin-bottom:26px}.hero-actions{display:flex;flex-wrap:wrap;gap:12px}.trust{display:flex;flex-wrap:wrap;gap:18px;margin-top:28px;color:#5d6063;font-size:.88rem}.trust span:before{content:"✓";color:var(--orange);font-weight:900;margin-right:7px}.hero-art{min-height:360px;display:grid;place-items:center;position:relative}.art-circle{width:min(390px,100%);aspect-ratio:1;background:#fff0e5;border-radius:50%;position:absolute}.lunchbox-art{width:min(430px,100%);position:relative;filter:drop-shadow(0 25px 18px #2222)}.floating-tag{position:absolute;right:0;bottom:30px;background:white;box-shadow:var(--shadow);border-radius:16px;padding:13px 17px;font-weight:850;transform:rotate(2deg)}.floating-tag small{display:block;color:var(--muted);font-weight:600}
+.section{padding:80px 0}.soft{background:var(--soft)}.section-head{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:32px}.section-head h2{font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-.065em;line-height:1.05;margin:12px 0 0}.section-head p{color:var(--muted);max-width:440px;margin:0}.products{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.product-card{border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#fff;display:flex;flex-direction:column;transition:.2s}.product-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.product-visual{min-height:220px;display:grid;place-items:center;background:#f7f6f3;position:relative;padding:25px}.product-card:nth-child(2) .product-visual{background:#fff3eb}.product-card:nth-child(3) .product-visual{background:#f1f1ef}.product-visual svg{width:220px;max-width:100%;height:auto}.pill{position:absolute;left:16px;top:16px;background:#fff;border-radius:999px;padding:6px 10px;font-size:.7rem;font-weight:850;text-transform:uppercase;letter-spacing:.05em}.product-body{padding:19px;display:flex;flex-direction:column;flex:1}.title-row{display:flex;align-items:baseline;justify-content:space-between;gap:10px}.title-row h3{font-size:1.38rem;letter-spacing:-.04em;margin:0}.capacity{color:var(--orange-dark);font-weight:850;white-space:nowrap}.product-body p{color:var(--muted);margin:8px 0 12px;font-size:.92rem}.features{list-style:none;padding:0;margin:0 0 15px;display:grid;gap:5px;font-size:.86rem}.features li:before{content:"✓";color:var(--orange);font-weight:900;margin-right:8px}.product-bottom{margin-top:auto;display:grid;gap:13px}.price{font-size:1.55rem;font-weight:900;letter-spacing:-.04em}.price del{font-size:.92rem;color:#929292;font-weight:600;letter-spacing:0;margin-right:5px}.price small{font-size:.75rem;color:var(--muted);font-weight:600;letter-spacing:0}.product-actions{display:flex;gap:8px}.product-actions .btn{flex:1;padding:12px 10px;font-size:.9rem}.qty-label{font-size:.82rem;color:var(--muted)}
+.benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}.benefit{padding:23px;border:1px solid var(--line);border-radius:18px;background:white}.icon{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;background:#fff0e7;color:var(--orange);font-size:1.3rem;margin-bottom:15px}.benefit h3{margin-bottom:7px}.benefit p{color:var(--muted);font-size:.91rem;margin:0}.compare-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:18px}table{width:100%;border-collapse:collapse;min-width:630px;background:#fff}th,td{padding:16px 19px;text-align:left;border-bottom:1px solid var(--line)}th{background:var(--soft)}tr:last-child td{border-bottom:0}.check{color:var(--orange);font-weight:900}.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}.step{border-top:2px solid var(--orange);padding-top:18px}.step small{color:var(--orange);font-weight:900;letter-spacing:.1em}.step h3{margin:9px 0}.step p{color:var(--muted);margin:0}.banner{background:var(--ink);color:#fff;border-radius:26px;padding:45px;display:flex;align-items:center;justify-content:space-between;gap:25px}.banner h2{font-size:clamp(2rem,4vw,3rem);line-height:1.05;letter-spacing:-.06em;margin-bottom:12px}.banner p{color:#ccc;margin:0}.faq{max-width:820px;margin:auto}.faq-extra[hidden]{display:none}.faq-more-wrap{display:flex;justify-content:center;margin-top:24px}details{border-bottom:1px solid var(--line);padding:20px 0}summary{cursor:pointer;list-style:none;font-weight:800;display:flex;justify-content:space-between;gap:15px}summary::-webkit-details-marker{display:none}summary:after{content:"+";font-size:1.3rem;color:var(--orange)}details[open] summary:after{content:"−"}details p{color:var(--muted);margin:12px 0 0}.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:45px}.contact-grid h2{font-size:clamp(2rem,4vw,3rem);letter-spacing:-.06em;line-height:1.08}.contact-grid p{color:var(--muted)}.contact-card{padding:25px;border:1px solid var(--line);border-radius:20px}.contact-card label{display:block;font-weight:750;font-size:.85rem;margin:12px 0 6px}.contact-card input,.contact-card textarea,.checkout-form input,.checkout-form textarea,.checkout-form select{width:100%;padding:12px;border:1px solid #d9dad8;border-radius:10px;background:white}.contact-card textarea{min-height:100px;resize:vertical}.form-note{font-size:.78rem;color:var(--muted);margin:10px 0 0}footer{background:#f7f6f3;padding:35px 0 23px}.footer-top,.footer-bottom{display:flex;justify-content:space-between;gap:25px}.footer-top{padding-bottom:25px}.footer-links{display:flex;flex-wrap:wrap;gap:17px;font-size:.87rem;color:#555}.footer-bottom{border-top:1px solid #e4e3df;padding-top:17px;font-size:.78rem;color:#777}
+.mobile-cart-float{display:none;position:fixed;right:18px;bottom:20px;z-index:35;width:60px;height:60px;border:0;border-radius:50%;background:var(--orange);color:#fff;box-shadow:0 10px 28px #0003;align-items:center;justify-content:center;font-size:1.35rem}.mobile-cart-float .cart-count{position:absolute;right:-3px;top:-3px;border:2px solid white}.mobile-menu{display:none;border:1px solid var(--line);border-radius:10px;padding:8px 11px;background:#fff;font-weight:800}
+/* Koszyk i finalizacja */
+.overlay{position:fixed;inset:0;background:#15151580;z-index:40;opacity:0;visibility:hidden;transition:.2s}.overlay.open{opacity:1;visibility:visible}.cart-drawer{position:fixed;right:0;top:0;height:100dvh;width:min(470px,100%);background:white;z-index:41;transform:translateX(105%);transition:transform .28s;display:flex;flex-direction:column;box-shadow:-20px 0 60px #0002}.cart-drawer.open{transform:translateX(0)}.drawer-head{padding:22px 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.drawer-head h2{margin:0;font-size:1.45rem}.icon-btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:7px 11px;font-size:1.1rem}.cart-items{padding:10px 24px;overflow:auto;flex:1}.empty-cart{padding:45px 0;text-align:center;color:var(--muted)}.cart-item{display:grid;grid-template-columns:1fr auto;gap:12px;padding:18px 0;border-bottom:1px solid var(--line)}.cart-item h3{margin:0 0 4px;font-size:1rem}.cart-item p{margin:0;color:var(--muted);font-size:.86rem}.cart-item-right{text-align:right}.quantity{display:inline-flex;align-items:center;gap:10px;margin-top:10px;border:1px solid var(--line);border-radius:999px;padding:4px 8px}.quantity button{border:0;background:transparent;font-weight:900;font-size:1rem}.remove{display:block;margin:8px 0 0 auto;border:0;background:transparent;color:#888;text-decoration:underline;font-size:.78rem}.drawer-foot{padding:20px 24px;border-top:1px solid var(--line);box-shadow:0 -8px 25px #00000005}.subtotal{display:flex;justify-content:space-between;font-weight:850;font-size:1.1rem;margin-bottom:5px}.shipping-note{font-size:.78rem;color:var(--muted);margin-bottom:15px}.drawer-foot .btn{width:100%}.checkout-modal{position:fixed;z-index:45;inset:0;display:grid;place-items:center;padding:18px;opacity:0;visibility:hidden;transition:.2s}.checkout-modal.open{opacity:1;visibility:visible}.checkout-panel{width:min(760px,100%);max-height:92dvh;overflow:auto;background:#fff;border-radius:22px;box-shadow:0 30px 90px #0003}.checkout-head{display:flex;justify-content:space-between;align-items:center;padding:22px 26px;border-bottom:1px solid var(--line)}.checkout-head h2{margin:0}.checkout-content{padding:24px 26px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px}.checkout-form{display:grid;gap:12px}.checkout-form label{font-size:.82rem;font-weight:750;display:block;margin-bottom:5px}.checkout-form fieldset{border:1px solid var(--line);border-radius:12px;padding:14px}.checkout-form legend{font-weight:800;padding:0 5px}.radio-row{display:flex;gap:9px;align-items:flex-start;font-size:.88rem;margin:9px 0}.radio-row input{width:auto;margin-top:5px}.order-summary{background:var(--soft);border-radius:15px;padding:18px;height:max-content}.order-summary h3{margin-bottom:14px}.summary-line{display:flex;justify-content:space-between;gap:12px;font-size:.87rem;margin:10px 0}.summary-total{border-top:1px solid #ddd;padding-top:13px;margin-top:15px;font-weight:900;font-size:1.05rem}.demo-warning{font-size:.78rem;color:#79502f;background:#fff0df;padding:12px;border-radius:10px;margin-top:14px}.success-box{padding:35px;text-align:center}.success-box .success-icon{font-size:42px;color:var(--orange)}.toast{display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:white;border-radius:12px;padding:13px 18px;box-shadow:var(--shadow);z-index:60;max-width:calc(100% - 30px)}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr .8fr;gap:20px}.benefits{grid-template-columns:repeat(2,1fr)}.nav-links{gap:13px}.section-head{align-items:start;flex-direction:column}}
+@media(max-width:680px){.mobile-cart-float{display:flex}.container{width:calc(100% - 30px)}.nav{min-height:66px}.nav-links{display:none;position:absolute;top:66px;left:0;right:0;padding:20px;background:white;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch}.nav-links.open{display:flex}.mobile-menu{display:inline-flex}.nav>.btn{display:none}.hero{padding:48px 0 35px}.hero-grid{grid-template-columns:1fr}.hero-art{min-height:270px}.art-circle{width:265px}.lunchbox-art{width:300px}.floating-tag{right:0;bottom:8px}.section{padding:58px 0}.products{grid-template-columns:1fr}.product-visual{min-height:205px}.benefits{gap:10px}.benefit{padding:16px}.how-grid{grid-template-columns:1fr;gap:25px}.banner{padding:30px 23px;align-items:flex-start;flex-direction:column}.contact-grid{grid-template-columns:1fr;gap:25px}.footer-top,.footer-bottom{flex-direction:column}.checkout-content{grid-template-columns:1fr;padding:18px}.checkout-head{padding:18px}.checkout-form{order:2}.order-summary{order:1}}
+@media(max-width:390px){.benefits{grid-template-columns:1fr}.hero-actions .btn{width:100%}.brand{font-size:1.2rem}}
+</style>
+</head>
+<body>
+<div class="announcement">Ciepły posiłek, gdziekolwiek jesteś. Poznaj rodzinę HOTBOX.</div>
+<header><div class="container nav">
+  <a class="brand" href="#start" aria-label="HOTBOX — strona główna"><img class="brand-logo" src="logo.png" alt="HOTBOX"></a>
+  <nav class="nav-links" id="navLinks"><a href="#modele">Modele</a><a href="#zalety">Dlaczego HOTBOX?</a><a href="#porownanie">Porównanie</a><a href="#faq">FAQ</a><a href="#kontakt">Kontakt</a><a href="regulamin.html">Regulamin</a></nav>
+  <button class="btn cart-button" id="openCart">Koszyk <span class="cart-count" id="cartCount">0</span></button>
+  <button class="mobile-menu" id="menuButton" aria-label="Otwórz menu" aria-expanded="false">Menu ☰</button>
+</div></header>
+<main>
+<section class="hero" id="start"><div class="container hero-grid">
+  <div><span class="eyebrow">Twój codzienny komfort</span><h1>Twój lunch.<br><em>Zawsze na gorąco.</em></h1>
+    <p class="hero-copy">Poznaj podgrzewane lunchboxy HOTBOX i ciesz się ciepłym posiłkiem w pracy, na uczelni albo w podróży. Wybierz model dopasowany do Twojego dnia.</p>
+    <div class="hero-actions"><a class="btn" href="#modele">Wybierz lunchbox →</a><a class="btn outline" href="#porownanie">Porównaj modele</a></div>
+    <div class="trust"><span>3 modele do wyboru</span><span>Przemyślany design</span><span>Na co dzień i w podróży</span></div>
+  </div>
+  <div class="hero-art"><div class="art-circle"></div>
+    <svg class="lunchbox-art" viewBox="0 0 500 360" role="img" aria-label="Minimalistyczny lunchbox z parą">
+      <g fill="none" stroke="#202124" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><path d="M175 95 C150 55 185 38 170 12 M250 92 C225 50 270 35 250 5 M325 95 C300 58 340 42 325 18" stroke="#f4511e" stroke-width="11"/><path d="M95 142 Q95 115 125 115 H375 Q405 115 405 142 V164 H95Z" fill="#fff"/><rect x="70" y="155" width="360" height="150" rx="30" fill="#fff"/><path d="M70 183 H430"/><rect x="215" y="145" width="70" height="31" rx="8" fill="#fff"/><path d="M105 305 V322 Q105 332 118 332 H145 M395 305 V322 Q395 332 382 332 H355"/></g><rect x="235" y="157" width="30" height="8" rx="4" fill="#f4511e"/><path d="M110 214 H390" stroke="#e7e7e7" stroke-width="4" stroke-linecap="round"/>
+    </svg><div class="floating-tag">Ciepło pod ręką<small>HOTBOX na Twój dzień</small></div>
+  </div>
+</div></section>
+<section class="section" id="modele"><div class="container">
+  <div class="section-head"><div><span class="eyebrow">Poznaj kolekcję</span><h2>Trzy modele.<br>Jeden ciepły wybór.</h2></div><p>Od kompaktowego lunchboxa na szybki lunch po pojemny model z miejscem na dwa dania — wybierz rozwiązanie dla siebie.</p></div>
+  <div class="products">
+    <article class="product-card" data-id="smart">
+      <div class="product-visual"><span class="pill">Lekki i mobilny</span><svg viewBox="0 0 260 180" role="img" aria-label="Lunchbox SMART"><g stroke="#242629" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"><path d="M65 60 Q65 43 82 43 H178 Q195 43 195 60 V72 H65Z" fill="#fff"/><rect x="51" y="68" width="158" height="77" rx="17" fill="#fff"/><path d="M51 86 H209" fill="none"/><rect x="112" y="62" width="36" height="17" rx="5" fill="#fff"/><path d="M79 145 V153 H98 M181 145 V153 H162" fill="none"/></g><rect x="122" y="68" width="16" height="4" rx="2" fill="#f4511e"/></svg></div>
+      <div class="product-body"><div class="title-row"><h3>HOTBOX SMART</h3><span class="capacity">0,7 l</span></div><p>Kompaktowy model na mniejszy posiłek — wygodny do pracy, na uczelnię i w podróż.</p><ul class="features"><li>Pojemność: 0,7 l</li><li>Akumulator: ok. 5 000 mAh*</li><li>Praca na ładowaniu: ok. 60–80 min*</li><li>Ładowanie: ok. 4–5 h*</li><li>Podgrzewanie: bezprzewodowe</li><li>Dodatkowo: utrzymywanie temperatury</li></ul><div class="product-bottom"><div class="price"><del>189,99 zł</del> 169,99 zł <small>cena promocyjna</small></div><div class="product-actions"><button class="btn add-to-cart" data-id="smart">Dodaj do koszyka</button><button class="btn outline quick-buy" data-id="smart" aria-label="Kup HOTBOX SMART">Kup</button></div></div></div>
+    </article>
+    <article class="product-card" data-id="basic">
+      <div class="product-visual"><span class="pill">Na każdy dzień</span><svg viewBox="0 0 260 180" role="img" aria-label="Lunchbox BASIC"><g stroke="#242629" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"><path d="M51 53 Q51 35 72 35 H188 Q209 35 209 53 V69 H51Z" fill="#fff"/><rect x="36" y="65" width="188" height="87" rx="19" fill="#fff"/><path d="M36 88 H224" fill="none"/><rect x="108" y="59" width="44" height="22" rx="5" fill="#fff"/><path d="M64 152 V160 H86 M196 152 V160 H174" fill="none"/></g><rect x="120" y="66" width="20" height="5" rx="2" fill="#f4511e"/></svg></div>
+      <div class="product-body"><div class="title-row"><h3>HOTBOX BASIC</h3><span class="capacity">1 l</span></div><p>Uniwersalna pojemność na codzienny lunch w pracy, szkole lub poza domem.</p><ul class="features"><li>Pojemność: 1,0 l</li><li>Akumulator: ok. 8 000 mAh*</li><li>Praca na ładowaniu: ok. 80–100 min*</li><li>Ładowanie: ok. 4–6 h*</li><li>Podgrzewanie: bezprzewodowe</li><li>Dodatkowo: utrzymywanie temperatury</li></ul><div class="product-bottom"><div class="price"><del>219,99 zł</del> 199,99 zł <small>cena promocyjna</small></div><div class="product-actions"><button class="btn add-to-cart" data-id="basic">Dodaj do koszyka</button><button class="btn outline quick-buy" data-id="basic" aria-label="Kup HOTBOX BASIC">Kup</button></div></div></div>
+    </article>
+    <article class="product-card" data-id="pro">
+      <div class="product-visual"><span class="pill">Więcej możliwości</span><svg viewBox="0 0 260 180" role="img" aria-label="Lunchbox PRO"><g stroke="#242629" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"><path d="M37 50 Q37 31 59 31 H201 Q223 31 223 50 V68 H37Z" fill="#fff"/><rect x="22" y="64" width="216" height="91" rx="20" fill="#fff"/><path d="M22 88 H238" fill="none"/><rect x="105" y="58" width="50" height="24" rx="6" fill="#fff"/><path d="M51 155 V163 H75 M209 155 V163 H185" fill="none"/><rect x="91" y="105" width="78" height="29" rx="8" fill="#f7f6f3"/><path d="M130 110 V129 M120 119 H140" fill="none" stroke="#f4511e" stroke-width="4"/></g><rect x="120" y="65" width="20" height="5" rx="2" fill="#f4511e"/></svg></div>
+      <div class="product-body"><div class="title-row"><h3>HOTBOX PRO</h3><span class="capacity">1,5 l</span></div><p>Największy model w kolekcji — dla osób, które potrzebują większej porcji i dodatkowej kontroli.</p><ul class="features"><li>Pojemność: 1,5 l</li><li>Akumulator: ok. 16 000 mAh*</li><li>Praca na ładowaniu: ok. 120 min*</li><li>Ładowanie: ok. 4–6 h*</li><li>Podgrzewanie: bezprzewodowe</li><li>Wyświetlacz i regulacja temperatury</li><li>Dodatkowo: utrzymywanie temperatury</li></ul><div class="product-bottom"><div class="price"><del>299,99 zł</del> 279,99 zł <small>cena promocyjna</small></div><div class="product-actions"><button class="btn add-to-cart" data-id="pro">Dodaj do koszyka</button><button class="btn outline quick-buy" data-id="pro" aria-label="Kup HOTBOX PRO">Kup</button></div></div></div>
+    </article>
+  </div>
+</div></section>
+<section class="section soft" id="zalety"><div class="container"><div class="section-head"><div><span class="eyebrow">Mała zmiana, duża wygoda</span><h2>Twój rytm.<br>Twój posiłek.</h2></div><p>Więcej wygody podczas codziennych przerw na jedzenie — bez rezygnowania z własnego planu dnia.</p></div>
+  <div class="benefits">
+    <article class="benefit"><div class="icon">♨</div><h3>Ciepły posiłek</h3><p>Ciesz się jedzeniem podgrzanym w lunchboxie, zamiast polegać na dostępności kuchni.</p></article>
+    <article class="benefit"><div class="icon">↗</div><h3>W Twoim rytmie</h3><p>Do pracy, na uczelnię i w podróż — wybierz model dopasowany do swojego dnia.</p></article>
+    <article class="benefit"><div class="icon">▱</div><h3>Trzy pojemności</h3><p>Od kompaktowego SMART 0,7 l po pojemny PRO 1,5 l.</p></article>
+    <article class="benefit"><div class="icon">✓</div><h3>Wygoda na co dzień</h3><p>Praktyczne rozwiązanie dla osób, które lubią mieć posiłek zaplanowany po swojemu.</p></article>
+  </div>
+</div></section>
+<section class="section" id="porownanie"><div class="container"><div class="section-head"><div><span class="eyebrow">Wybierz świadomie</span><h2>Porównaj modele</h2></div><p>Sprawdź najważniejsze różnice i znajdź lunchbox dopasowany do swoich potrzeb.</p></div><div class="compare-wrap"><table><thead><tr><th>Funkcja</th><th>SMART</th><th>BASIC</th><th>PRO</th></tr></thead><tbody>
+<tr><td>Pojemność pojemnika</td><td>0,7 l</td><td>1 l</td><td>1,5 l</td></tr><tr><td>Pojemność akumulatora*</td><td>ok. 5 000 mAh</td><td>ok. 8 000 mAh</td><td>ok. 16 000 mAh</td></tr><tr><td>Praca na jednym ładowaniu*</td><td>ok. 60–80 min</td><td>ok. 80–100 min</td><td>ok. 120 min</td></tr><tr><td>Czas ładowania*</td><td>ok. 4–5 h</td><td>ok. 4–6 h</td><td>ok. 4–6 h</td></tr><tr><td>Bezprzewodowe podgrzewanie</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr><tr><td>Rodzaj zasilania</td><td>Akumulator</td><td>Akumulator</td><td>Akumulator</td></tr><tr><td>Podgrzewanie bez kabla</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr><tr><td>Utrzymywanie temperatury</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr><tr><td>Wyświetlacz</td><td>—</td><td>—</td><td class="check">✓</td></tr><tr><td>Regulacja temperatury</td><td>—</td><td>—</td><td class="check">✓</td></tr><tr><td>Kompaktowy rozmiar</td><td class="check">✓</td><td>—</td><td>—</td></tr><tr><td>Codzienny, uniwersalny wybór</td><td>—</td><td class="check">✓</td><td class="check">✓</td></tr><tr><td>Regulacja temperatury</td><td>—</td><td>—</td><td class="check">✓</td></tr><tr><td>Miejsce na zupę i drugie danie</td><td>—</td><td>—</td><td class="check">✓</td></tr>
+</tbody></table></div><p class="form-note" style="margin-top:12px">* Wartości akumulatora, czasu pracy i ładowania są orientacyjnymi założeniami do projektu, opracowanymi na podstawie parametrów podobnych lunchboxów dostępnych na rynku. Nie są potwierdzoną specyfikacją HOTBOX — przed publikacją oferty należy zweryfikować je u dostawcy. Rzeczywisty czas pracy zależy m.in. od temperatury i ilości jedzenia oraz trybu podgrzewania.</p></div></div></section>
+<section class="section soft"><div class="container"><div class="section-head"><div><span class="eyebrow">Prosto i wygodnie</span><h2>Jak zacząć z HOTBOX?</h2></div></div><div class="how-grid">
+<article class="step"><small>KROK 01</small><h3>Wybierz swój model</h3><p>Dopasuj pojemność i funkcje do tego, co lubisz jeść i jak wygląda Twój dzień.</p></article>
+<article class="step"><small>KROK 02</small><h3>Przygotuj posiłek</h3><p>Włóż jedzenie do lunchboxa i postępuj zgodnie z instrukcją obsługi danego modelu.</p></article>
+<article class="step"><small>KROK 03</small><h3>Smacznego!</h3><p>Zrób sobie przerwę i ciesz się posiłkiem w swoim rytmie.</p></article>
+</div></div></section>
+<section class="section"><div class="container"><div class="banner"><div><h2>Nie odkładaj dobrego lunchu na później.</h2><p>Wybierz HOTBOX, który pasuje do Twojego dnia.</p></div><a href="#modele" class="btn">Zobacz modele →</a></div></div></section>
+<section class="section soft" id="faq"><div class="container"><div class="section-head"><div><span class="eyebrow">FAQ</span><h2>Masz pytania?</h2><p>Najważniejsze informacje o modelach, akumulatorach i korzystaniu z HOTBOX.</p></div></div><div class="faq">
+<details><summary>Czym różnią się modele HOTBOX?</summary><p>SMART ma pojemność 0,7 l i kompaktowy format. BASIC oferuje 1 l. PRO ma 1,5 l oraz dodatkowy wyświetlacz i możliwość regulacji temperatury. Wszystkie modele w założeniach projektu mają akumulator, bezprzewodowe podgrzewanie i funkcję utrzymywania temperatury.</p></details>
+<details><summary>Jaką pojemność akumulatora ma każdy model?</summary><p>Orientacyjne założenia projektowe to: SMART — ok. 5 000 mAh, BASIC — ok. 8 000 mAh, PRO — ok. 16 000 mAh. Wartości wymagają potwierdzenia u dostawcy i nie są jeszcze oficjalną specyfikacją produktów.</p></details>
+<details><summary>Na jak długo wystarcza jedno ładowanie?</summary><p>Szacunkowo: SMART — 60–80 minut, BASIC — 80–100 minut, PRO — około 120 minut. Rzeczywisty czas zależy m.in. od ilości i temperatury początkowej jedzenia, temperatury otoczenia oraz trybu pracy.</p></details>
+<details><summary>Ile trwa ładowanie lunchboxa?</summary><p>Orientacyjnie 4–5 godzin dla SMART oraz 4–6 godzin dla BASIC i PRO. Należy stosować się do instrukcji ładowania dołączonej do konkretnego urządzenia.</p></details>
+
+<div class="faq-extra" id="faqExtra" hidden>
+<details><summary>Czy HOTBOX podgrzewa jedzenie bez podłączenia do gniazdka?</summary><p>Takie jest założenie modeli prezentowanych w projekcie — akumulator ma umożliwiać podgrzewanie bez stałego podłączenia do gniazdka. Przed użyciem należy naładować urządzenie zgodnie z instrukcją.</p></details>
+<details><summary>Jak długo trwa podgrzewanie posiłku?</summary><p>Czas zależy od rodzaju i ilości jedzenia, temperatury początkowej oraz warunków otoczenia. Dokładny czas powinien zostać potwierdzony testami i instrukcją producenta.</p></details>
+<details><summary>Jak czyścić lunchbox?</summary><p>Czyść pojemnik zgodnie z instrukcją obsługi. Przed myciem wyłącz urządzenie i odłącz ładowarkę. Nie zanurzaj części elektrycznych, akumulatora ani złączy w wodzie.</p></details>
+<details><summary>Czy mogę podgrzewać każdy rodzaj jedzenia?</summary><p>Korzystaj z urządzenia zgodnie z jego przeznaczeniem i instrukcją producenta. Nie wkładaj produktów ani przedmiotów, które mogą uszkodzić pojemnik lub element grzewczy.</p></details>
+<details><summary>Czy mogę kupić kilka lunchboxów?</summary><p>Tak. Dodaj wybrane modele do koszyka i zmień ich ilość przed przejściem do podsumowania.</p></details>
+<details><summary>Jakie są dostępne metody dostawy?</summary><p>Formularz prezentuje InPost, DPD, DHL i GLS w dostawie kurierskiej oraz InPost Paczkomat, DPD Pickup i ORLEN Paczkę w punktach lub automatach. Są to przykładowe opcje i stawki, które wymagają potwierdzenia przed uruchomieniem sprzedaży.</p></details>
+<details><summary>Jak mogę zapłacić za zamówienie?</summary><p>W formularzu można wybrać BLIK, szybki przelew online, kartę płatniczą, przelew tradycyjny lub płatność przy odbiorze. Są to opcje prezentacyjne — strona nie jest podłączona do operatora płatności, więc nie pobiera rzeczywistych płatności.</p></details>
+<details><summary>Czy mogę zwrócić produkt?</summary><p>Przy rzeczywistej sprzedaży konsumentowi na odległość co do zasady przysługuje 14 dni na odstąpienie od umowy, z wyjątkami określonymi w przepisach. Szczegóły powinny znaleźć się w docelowym regulaminie.</p></details>
+<details><summary>Co zrobić, jeśli produkt jest uszkodzony lub nie działa?</summary><p>W przypadku rzeczywistego zakupu należy skontaktować się ze sprzedawcą i opisać problem, podając dane pozwalające zidentyfikować zakup. Konsument ma uprawnienia wynikające z przepisów o zgodności towaru z umową.</p></details>
+</div>
+<div class="faq-more-wrap"><button class="btn outline" type="button" id="faqMore" aria-expanded="false" aria-controls="faqExtra">Pokaż więcej pytań</button></div>
+</div></div></section>
+<section class="section" id="kontakt"><div class="container contact-grid">
+<div><span class="eyebrow">Kontakt</span><h2>Porozmawiajmy o Twoim HOTBOX-ie.</h2><p>Masz pytanie o model, cenę lub zamówienie? Napisz do nas.</p><p><strong>E-mail:</strong> kontakt@hotbox.pl<br></p></div>
+<form class="contact-card" id="contactForm"><h3>Napisz do nas</h3><label for="contactName">Imię</label><input id="contactName" required placeholder="Twoje imię"><label for="contactEmail">Adres e-mail</label><input id="contactEmail" type="email" required placeholder="twoj@email.pl"><label for="contactMessage">Wiadomość</label><textarea id="contactMessage" required placeholder="W czym możemy pomóc?"></textarea><button class="btn" type="submit" style="width:100%;margin-top:14px">Przygotuj wiadomość</button></form>
+</div></section>
+</main>
+<footer><div class="container"><div class="footer-top"><div><a class="brand" href="#start"><img class="brand-logo" src="logo.png" alt="HOTBOX"></a><p style="color:var(--muted);margin:12px 0 0">Twój lunch. Zawsze na gorąco.</p></div><div class="footer-links"><a href="#modele">Modele</a><a href="#porownanie">Porównanie</a><a href="#faq">FAQ</a><a href="#kontakt">Kontakt</a></div></div><div class="footer-bottom"><span>© <span id="year"></span> HOTBOX. Wszelkie prawa zastrzeżone.</span></div></div></footer>
+
+<button class="mobile-cart-float" id="mobileCartButton" aria-label="Otwórz koszyk">🛒<span class="cart-count" id="mobileCartCount">0</span></button>
+<div class="overlay" id="overlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Koszyk" aria-hidden="true">
+  <div class="drawer-head"><h2>Twój koszyk</h2><button class="icon-btn" id="closeCart" aria-label="Zamknij koszyk">✕</button></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="drawer-foot"><div class="subtotal"><span>Razem</span><span id="cartTotal">0,00 zł</span></div><div class="shipping-note">Koszt dostawy zostanie pokazany w kolejnym kroku.</div><button class="btn" id="checkoutButton">Przejdź do zamówienia →</button></div>
+</aside>
+
+<div class="checkout-modal" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+  <div class="checkout-panel">
+    <div class="checkout-head"><h2 id="checkoutTitle">Dane do zamówienia</h2><button class="icon-btn" id="closeCheckout" aria-label="Zamknij formularz">✕</button></div>
+    <div id="checkoutMain" class="checkout-content">
+      <form class="checkout-form" id="checkoutForm">
+        <div><label for="buyerName">Imię i nazwisko *</label><input id="buyerName" required autocomplete="name" placeholder="Jan Kowalski"></div>
+        <div><label for="buyerEmail">E-mail *</label><input id="buyerEmail" type="email" required autocomplete="email" placeholder="jan@email.pl"></div>
+        <div><label for="buyerPhone">Telefon (opcjonalnie)</label><input id="buyerPhone" type="tel" autocomplete="tel" placeholder="+48"></div>
+        <div><label for="buyerStreet">Ulica i numer *</label><input id="buyerStreet" required autocomplete="street-address" placeholder="ul. Przykładowa 12/3"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div><label for="buyerPostcode">Kod pocztowy *</label><input id="buyerPostcode" required autocomplete="postal-code" placeholder="00-000"></div><div><label for="buyerCity">Miasto *</label><input id="buyerCity" required autocomplete="address-level2" placeholder="Warszawa"></div></div>
+        <fieldset><legend>Dostawa</legend>
+          <label class="radio-row"><input type="radio" name="shipping" value="InPost Kurier" checked> <span>InPost Kurier — 16,99 zł</span></label>
+          <label class="radio-row"><input type="radio" name="shipping" value="DPD Kurier"> <span>DPD Kurier — 17,99 zł</span></label>
+          <label class="radio-row"><input type="radio" name="shipping" value="DHL Kurier"> <span>DHL Kurier — 18,99 zł</span></label>
+          <label class="radio-row"><input type="radio" name="shipping" value="GLS Kurier"> <span>GLS Kurier — 17,99 zł</span></label>
+          <label class="radio-row"><input type="radio" name="shipping" value="InPost Paczkomat"> <span>InPost Paczkomat 24/7 — 13,99 zł</span></label>
+          <label class="radio-row"><input type="radio" name="shipping" value="DPD Pickup"> <span>DPD Pickup — punkt lub automat — 13,49 zł</span></label>
+          <label class="radio-row"><input type="radio" name="shipping" value="ORLEN Paczka"> <span>ORLEN Paczka — punkt lub automat — 11,99 zł</span></label>
+          <div id="lockerCodeWrap" hidden><label for="lockerCode">Kod lub adres wybranego punktu / automatu</label><input id="lockerCode" placeholder="Np. KRA01A" autocomplete="off"></div>
+        </fieldset>
+        <fieldset><legend>Forma płatności</legend>
+          <label class="radio-row"><input type="radio" name="payment" value="BLIK" checked><span>BLIK</span></label>
+          <label class="radio-row"><input type="radio" name="payment" value="Szybki przelew online"><span>Szybki przelew online</span></label>
+          <label class="radio-row"><input type="radio" name="payment" value="Karta płatnicza"><span>Karta płatnicza (Visa / Mastercard)</span></label>
+          <label class="radio-row"><input type="radio" name="payment" value="Przelew tradycyjny"><span>Przelew tradycyjny</span></label>
+          <label class="radio-row"><input type="radio" name="payment" value="Płatność przy odbiorze"><span>Płatność przy odbiorze</span></label>
+        </fieldset>
+        <label class="radio-row"><input type="checkbox" id="terms" required><span>Potwierdzam, że zapoznałem(-am) się z warunkami zamówienia. </span></label>
+        <button class="btn" type="submit">Potwierdź zamówienie →</button>
+        
+      </form>
+      <div class="order-summary"><h3>Podsumowanie</h3><div id="checkoutSummary"></div><div class="summary-line"><span>Dostawa</span><strong id="shippingPrice">15,99 zł</strong></div><div class="summary-line summary-total"><span>Łącznie</span><strong id="checkoutTotal">0,00 zł</strong></div></div>
+    </div>
+    <div id="checkoutSuccess" class="success-box" hidden><div class="success-icon">✓</div><h2>Zamówienie przygotowane!</h2><p id="successMessage"></p><p>Dziękujemy. Szczegóły zamówienia zostały przygotowane.</p><button class="btn" id="finishCheckout">Wróć do sklepu</button></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+
+const PRODUCTS = {
+  smart: { id: "smart", name: "HOTBOX SMART", capacity: "0,7 l", price: 169.99 },
+  basic: { id: "basic", name: "HOTBOX BASIC", capacity: "1 l", price: 199.99 },
+  pro: { id: "pro", name: "HOTBOX PRO", capacity: "1,5 l", price: 279.99 }
+};
+const SHIPPING = { "InPost Kurier": 16.99, "DPD Kurier": 17.99, "DHL Kurier": 18.99, "GLS Kurier": 17.99, "InPost Paczkomat": 13.99, "DPD Pickup": 13.49, "ORLEN Paczka": 11.99 };
+const cart = new Map();
+const $ = id => document.getElementById(id);
+const money = value => new Intl.NumberFormat("pl-PL", { style: "currency", currency: "PLN" }).format(value);
+const overlay = $("overlay"), drawer = $("cartDrawer"), checkoutModal = $("checkoutModal");
+const toast = $("toast");
+
+function notify(message) {
+  toast.textContent = message;
+  toast.style.display = "block";
+  clearTimeout(window.toastTimeout);
+  window.toastTimeout = setTimeout(() => toast.style.display = "none", 3500);
+}
+function totalItems() {
+  let count = 0;
+  cart.forEach(item => count += item.qty);
+  return count;
+}
+function subtotal() {
+  let sum = 0;
+  cart.forEach(item => {
+    const product = PRODUCTS[item.id];
+    if (product.price !== null) sum += product.price * item.qty;
+  });
+  return sum;
+}
+function renderCart() {
+  $("cartCount").textContent = totalItems();
+  $("mobileCartCount").textContent = totalItems();
+  const root = $("cartItems");
+  if (!cart.size) {
+    root.innerHTML = '<div class="empty-cart"><div style="font-size:38px">🛍</div><h3>Koszyk jest pusty</h3><p>Dodaj model, który najbardziej pasuje do Ciebie.</p><button class="btn" id="emptyGoShop">Zobacz modele</button></div>';
+    $("emptyGoShop").addEventListener("click", () => { closeCart(); document.getElementById("modele").scrollIntoView({behavior:"smooth"}); });
+  } else {
+    root.innerHTML = "";
+    cart.forEach(item => {
+      const p = PRODUCTS[item.id];
+      const priceText = p.price === null ? "Cena do ustawienia" : money(p.price * item.qty);
+      const el = document.createElement("div");
+      el.className = "cart-item";
+      el.innerHTML = `<div><h3>${p.name}</h3><p>Pojemność: ${p.capacity}</p><div class="quantity"><button type="button" data-action="minus" data-id="${p.id}" aria-label="Zmniejsz ilość">−</button><strong>${item.qty}</strong><button type="button" data-action="plus" data-id="${p.id}" aria-label="Zwiększ ilość">+</button></div></div><div class="cart-item-right"><strong>${priceText}</strong><button class="remove" data-action="remove" data-id="${p.id}">Usuń</button></div>`;
+      root.appendChild(el);
+    });
+    root.querySelectorAll("[data-action]").forEach(btn => btn.addEventListener("click", () => {
+      const id = btn.dataset.id, action = btn.dataset.action;
+      if (action === "plus") cart.get(id).qty++;
+      if (action === "minus") { cart.get(id).qty--; if (cart.get(id).qty <= 0) cart.delete(id); }
+      if (action === "remove") cart.delete(id);
+      renderCart();
+    }));
+  }
+  $("cartTotal").textContent = cart.size && [...cart.keys()].some(id => PRODUCTS[id].price === null) ? "Ustaw ceny" : money(subtotal());
+}
+function openCart() { overlay.classList.add("open"); drawer.classList.add("open"); drawer.setAttribute("aria-hidden","false"); document.body.style.overflow="hidden"; }
+function closeCart() { overlay.classList.remove("open"); drawer.classList.remove("open"); drawer.setAttribute("aria-hidden","true"); if (!checkoutModal.classList.contains("open")) document.body.style.overflow=""; }
+function addToCart(id, goToCart = false) {
+  if (!PRODUCTS[id]) return;
+  if (PRODUCTS[id].price === null) {
+    notify("Brakuje ceny produktu.");
+    if (!cart.has(id)) cart.set(id, {id, qty:1});
+    renderCart();
+    if (goToCart) openCart();
+    return;
+  }
+  if (cart.has(id)) cart.get(id).qty++; else cart.set(id, {id, qty:1});
+  renderCart();
+  notify(`${PRODUCTS[id].name} dodano do koszyka.`);
+  if (goToCart) openCart();
+}
+document.querySelectorAll(".add-to-cart").forEach(btn => btn.addEventListener("click", () => addToCart(btn.dataset.id)));
+document.querySelectorAll(".quick-buy").forEach(btn => btn.addEventListener("click", () => { addToCart(btn.dataset.id); openCart(); }));
+$("openCart").addEventListener("click", openCart);
+$("mobileCartButton").addEventListener("click", openCart);
+$("closeCart").addEventListener("click", closeCart);
+overlay.addEventListener("click", () => { closeCart(); closeCheckout(); });
+$("menuButton").addEventListener("click", () => {
+  const nav = $("navLinks");
+  const isOpen = nav.classList.toggle("open");
+  $("menuButton").setAttribute("aria-expanded", String(isOpen));
+});
+$("navLinks").querySelectorAll("a").forEach(a => a.addEventListener("click", () => $("navLinks").classList.remove("open")));
+
+function selectedShipping() {
+  return document.querySelector('input[name="shipping"]:checked')?.value || "Kurier";
+}
+function updateCheckoutSummary() {
+  const root = $("checkoutSummary");
+  root.innerHTML = "";
+  cart.forEach(item => {
+    const p = PRODUCTS[item.id];
+    const line = document.createElement("div");
+    line.className = "summary-line";
+    line.innerHTML = `<span>${p.name} × ${item.qty}</span><strong>${p.price === null ? "Brak ceny" : money(p.price * item.qty)}</strong>`;
+    root.appendChild(line);
+  });
+  const allPriced = [...cart.keys()].every(id => PRODUCTS[id].price !== null);
+  const ship = SHIPPING[selectedShipping()];
+  $("shippingPrice").textContent = money(ship);
+  $("checkoutTotal").textContent = allPriced ? money(subtotal() + ship) : "Ustaw ceny";
+}
+function openCheckout() {
+  if (!cart.size) { notify("Twój koszyk jest pusty."); return; }
+  if ([...cart.keys()].some(id => PRODUCTS[id].price === null)) {
+    notify("Nie można kontynuować: brakuje ceny produktu.");
+    return;
+  }
+  closeCart();
+  $("checkoutMain").hidden = false;
+  $("checkoutSuccess").hidden = true;
+  checkoutModal.classList.add("open");
+  overlay.classList.add("open");
+  document.body.style.overflow = "hidden";
+  updateCheckoutSummary();
+}
+function closeCheckout() {
+  checkoutModal.classList.remove("open");
+  if (!drawer.classList.contains("open")) { overlay.classList.remove("open"); document.body.style.overflow = ""; }
+}
+$("checkoutButton").addEventListener("click", openCheckout);
+$("closeCheckout").addEventListener("click", closeCheckout);
+function updateShippingFields() {
+  const isLocker = ["InPost Paczkomat", "DPD Pickup", "ORLEN Paczka"].includes(selectedShipping());
+  $("lockerCodeWrap").hidden = !isLocker;
+  $("lockerCode").required = isLocker;
+}
+document.querySelectorAll('input[name="shipping"]').forEach(input => input.addEventListener("change", () => {
+  updateShippingFields();
+  updateCheckoutSummary();
+}));
+updateShippingFields();
+$("checkoutForm").addEventListener("submit", event => {
+  event.preventDefault();
+  if (!cart.size) return;
+  const order = {
+    reference: "HB-" + Date.now().toString().slice(-7),
+    createdAt: new Date().toISOString(),
+    customer: {
+      name: $("buyerName").value.trim(),
+      email: $("buyerEmail").value.trim(),
+      phone: $("buyerPhone").value.trim(),
+      street: $("buyerStreet").value.trim(),
+      postcode: $("buyerPostcode").value.trim(),
+      city: $("buyerCity").value.trim()
+    },
+    shipping: selectedShipping(),
+    lockerCode: ["InPost Paczkomat", "DPD Pickup", "ORLEN Paczka"].includes(selectedShipping()) ? $("lockerCode").value.trim() : "",
+    payment: document.querySelector('input[name="payment"]:checked')?.value,
+    items: [...cart.values()].map(item => ({...PRODUCTS[item.id], qty:item.qty})),
+    total: subtotal() + SHIPPING[selectedShipping()]
+  };
+  
+  try { localStorage.setItem("hotbox-demo-last-order", JSON.stringify(order)); } catch (_) {}
+  $("checkoutMain").hidden = true;
+  $("checkoutSuccess").hidden = false;
+  $("successMessage").textContent = `Numer zamówienia: ${order.reference}. Kwota podglądowa: ${money(order.total)}. Dziękujemy za zainteresowanie ofertą HOTBOX.`;
+  cart.clear();
+  renderCart();
+});
+$("finishCheckout").addEventListener("click", () => { closeCheckout(); document.getElementById("start").scrollIntoView({behavior:"smooth"}); });
+$("contactForm").addEventListener("submit", event => {
+  event.preventDefault();
+  const subject = encodeURIComponent("Zapytanie ze strony HOTBOX");
+  const body = encodeURIComponent(`Imię: ${$("contactName").value}\nE-mail: ${$("contactEmail").value}\n\nWiadomość:\n${$("contactMessage").value}`);
+  window.location.href = `mailto:kontakt@hotbox.pl?subject=${subject}&body=${body}`;
+});
+$("year").textContent = new Date().getFullYear();
+renderCart();
+
+const faqMoreButton = document.getElementById('faqMore');
+const faqExtra = document.getElementById('faqExtra');
+
+if (faqMoreButton && faqExtra) {
+  const faqItems = [...faqExtra.querySelectorAll('details')];
+  let faqShown = 0;
+
+  // Ukryj dodatkowe pytania na starcie; pokazuj je partiami po 4.
+  faqItems.forEach(item => item.hidden = true);
+
+  faqMoreButton.addEventListener('click', () => {
+    // Gdy wszystkie pytania są widoczne, przycisk zwija dodatkową sekcję.
+    if (faqShown >= faqItems.length) {
+      faqItems.forEach(item => item.hidden = true);
+      faqExtra.hidden = true;
+      faqShown = 0;
+      faqMoreButton.textContent = 'Pokaż więcej pytań';
+      faqMoreButton.setAttribute('aria-expanded', 'false');
+      return;
+    }
+
+    // Odsłoń kontener i kolejne cztery pytania.
+    faqExtra.hidden = false;
+    const next = Math.min(faqShown + 4, faqItems.length);
+    faqItems.slice(faqShown, next).forEach(item => item.hidden = false);
+    faqShown = next;
+
+    if (faqShown >= faqItems.length) {
+      faqMoreButton.textContent = 'Zwiń dodatkowe pytania';
+    } else {
+      faqMoreButton.textContent = 'Pokaż kolejne pytania';
+    }
+    faqMoreButton.setAttribute('aria-expanded', 'true');
+  });
+}
+</script>
+</body>
+</html>
